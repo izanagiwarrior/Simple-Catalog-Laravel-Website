@@ -14,9 +14,6 @@
 
 
 
-
-
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.1.1/firebase-app.js"></script>
 

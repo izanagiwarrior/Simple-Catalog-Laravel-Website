@@ -21,20 +21,8 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = Products::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($data) {
-                    $button = '<a href="' . action('ProductsController@update_view', $data->id) . '" type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">Edit</a>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<a href="' . action('ProductsController@delete', $data->id) . '" type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"'."onclick='return confirm()'".'>Delete</a>';
-                    return $button;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-        return view('cms.product.product');
+        $data = Products::all();
+        return view('cms.product.product',compact('data'));
     }
 
     /**

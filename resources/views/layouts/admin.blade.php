@@ -78,50 +78,11 @@
                     <span>{{ __('Produk Anda') }}</span></a>
             </li>
 
-            <!-- Nav Item - Project -->
-            <li class="nav-item {{ Nav::isRoute('project*') }}">
-                <a class="nav-link" href="{{ route('project') }}">
-                    <i class="fas fa-fw fa-project-diagram"></i>
-                    <span>{{ __('Project') }}</span></a>
-            </li>
-
             <!-- Nav Item - Category -->
             <li class="nav-item {{ Nav::isRoute('category*') }}">
                 <a class="nav-link" href="{{ route('category') }}">
                     <i class="fas fa-fw fa-filter"></i>
                     <span>{{ __('Kategori') }}</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                {{ __('Settings') }}
-            </div>
-
-            <!-- Nav Item - Store -->
-            <li class="nav-item {{ Nav::isRoute('store*') }}">
-                <a class="nav-link" href="{{ route('store') }}">
-                    <i class="fas fa-fw fa-store"></i>
-                    <span>{{ __('Store') }}</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Nav::isRoute('profile*') }}">
-                <a class="nav-link" href="{{ route('profile') }}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>{{ __('Profile') }}</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - About -->
-            <li class="nav-item {{ Nav::isRoute('about*') }}">
-                <a class="nav-link" href="{{ route('about') }}">
-                    <i class="fas fa-fw fa-question"></i>
-                    <span>{{ __('About') }}</span>
-                </a>
             </li>
 
             <!-- Divider -->

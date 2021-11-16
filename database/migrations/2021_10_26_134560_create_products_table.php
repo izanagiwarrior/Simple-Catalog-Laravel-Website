@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('photo');
             $table->string('crafter');
             $table->text('description');
+            $table->string('price');
             $table->timestamps();
             $table->foreign('id_category')
                 ->references('id')

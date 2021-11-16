@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Products;
-use App\Store;
 use Illuminate\Http\Request;
 
 use DataTables;
@@ -21,8 +21,8 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Products::all();
-        return view('cms.product.product',compact('data'));
+        $data = Products::latest()->paginate(6);
+        return view('cms.product.product', compact('data'));
     }
 
     /**
@@ -32,7 +32,9 @@ class ProductsController extends Controller
      */
     public function create_view()
     {
-        return view('cms.product.create');
+        $category = Category::all();
+        $crafter = Auth::user();
+        return view('cms.product.create', compact('category', 'crafter'));
     }
 
     /**
@@ -43,19 +45,19 @@ class ProductsController extends Controller
     public function create_process(Request $request)
     {
         $request->validate([
-            'id_category' => 'required',
+            'category' => 'required',
             'crafter' => 'required',
             'title' => 'required',
+            'price' => 'required',
             'description' => 'required',
-            'foto' => 'required',
+            'foto' => 'required', 'mimes:jpg,jpeg,png',
         ]);
 
-        $store = Store::where('id_user', '=', Auth::id())->first();
-
         $product = new Products();
-        $product->id_store = $store->id;
-        $product->id_category = $request->id_category;
+        $product->id_category = $request->category;
+        $product->crafter = $request->crafter;
         $product->title = $request->title;
+        $product->price = $request->price;
         $product->description = $request->description;
         $product->photo = Storage::disk('public')->put('product', $request->file('foto'));
 
@@ -73,24 +75,25 @@ class ProductsController extends Controller
     public function update_view($id)
     {
         $data = Products::find($id);
-        return view('cms.category.update', compact('data'));
+        $category = Category::all();
+        return view('cms.product.update', compact('data', 'category'));
     }
 
     public function update_process(Request $request, $id)
     {
         $request->validate([
-            'id_category' => 'required',
+            'category' => 'required',
             'crafter' => 'required',
             'title' => 'required',
+            'price' => 'required',
             'description' => 'required',
+            'foto' => 'mimes:jpg,jpeg,png',
         ]);
 
-        
-        $store = Store::where('id_user', '=', Auth::id())->first();
-
         $product = Products::find($id);
-        $product->id_category = $request->id_category;
+        $product->id_category = $request->category;
         $product->title = $request->title;
+        $product->price = $request->price;
         $product->description = $request->description;
 
         if (isset($request->foto)) {
@@ -115,6 +118,10 @@ class ProductsController extends Controller
     public function delete($id)
     {
         $product = Products::find($id);
+        $image_path = 'storage/' . $product->photo;
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
         $product->delete();
 
         return redirect()->route('product')->withSuccess('Product deleted successfully.');

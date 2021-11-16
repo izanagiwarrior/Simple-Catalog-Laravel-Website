@@ -17,23 +17,25 @@ use Illuminate\Support\Facades\Route;
 // =============================== P U B L I C ================================
 // ============================================================================
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'PageController@welcome')->name('welcome');
+Route::get('/katalog', 'PageController@katalog')->name('katalog');
+Route::get('/detail-produk/{id_product}', 'PageController@detailProduk')->name('detailProduk');
+
 
 // ============================================================================
 // ================================ L O G I N =================================
 // ============================================================================
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Register Routes...
+    'reset' => false, // Reset Password Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 Route::middleware('auth')->group(function () {
 
     // Admin Home
     Route::get('/home', 'HomeController@index')->name('home');
-
-    // About
-    Route::get('/about', 'Controller@about')->name('about');
 
     // Product
     Route::prefix('product')->name('product')->group(function () {
@@ -43,16 +45,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/update/{id}', 'ProductsController@update_view')->name('.update');
         Route::post('/update/{id}', 'ProductsController@update_process')->name('.update.process');
         Route::get('/delete/{id}', 'ProductsController@delete')->name('.delete');
-    });
-
-    // Project
-    Route::prefix('project')->name('project')->group(function () {
-        Route::get('/', 'ProjectController@index')->name('');
-        Route::get('/create', 'ProjectController@create_view')->name('.create');
-        Route::post('/create', 'ProjectController@create_process')->name('.create.process');
-        Route::get('/update/{id}', 'ProjectController@update_view')->name('.update');
-        Route::post('/update/{id}', 'ProjectController@update_process')->name('.update.process');
-        Route::get('/delete/{id}', 'ProjectController@delete')->name('.delete');
     });
 
     // Categories
@@ -70,16 +62,4 @@ Route::middleware('auth')->group(function () {
         Route::get('/', 'ProfileController@index')->name('');
         Route::put('/', 'ProfileController@update')->name('.update');
     });
-
-    // Store
-    Route::prefix('store')->name('store')->group(function () {
-        Route::get('/', 'StoreController@index')->name('');
-        Route::put('/', 'StoreController@update')->name('.update');
-    });
-
-    
-
-
-
-
 });

@@ -7,12 +7,11 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center mb-4">
                                     <p class="text-title-login">login to</p>
-                                    <img src="{{asset('img/il_title_login.png')}}" width="200" alt="">
+                                    <img src="{{asset('img/logo.png')}}" width="200" alt="">
                                 </div>
 
                                 @if ($errors->any())

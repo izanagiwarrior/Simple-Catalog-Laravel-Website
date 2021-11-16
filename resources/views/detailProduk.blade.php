@@ -69,7 +69,7 @@ function rupiah($angka)
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-danger mt-auto" href="{{route('detailProduk', $dt->id)}}">PESAN SEKARANG</a></div>
+                        <div class="text-center"><a class="btn btn-outline-danger mt-auto" href="{{route('detailProduk', $dt->id)}}">Detail</a></div>
                     </div>
                 </div>
             </div>

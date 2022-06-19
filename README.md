@@ -1,76 +1,56 @@
-# Laravel SB Admin 2
+# Simple Catalog Laravel Website
 
-SB Admin 2 for Laravel.
+Simple Catalog Laravel Website to make website to display any product. You can use it for anything.
 
-| Laravel Version | Branch |
-|-----------------|--------|
-| 8.0             | master |
-| 7.0             | v7.0   |
-| 6.0             | v6.0   |
-| 5.8             | v5.8   |
+## Feature
 
-## Requirements
+A. Frontend
+Product Catalog
 
-- PHP >= 7.3.0
-- BCMath PHP Extension
-- Ctype PHP Extension
-- JSON PHP Extension
-- Mbstring PHP Extension
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
+B. Backend
+- Dashboard
+- Management:
+1. Product
+2. User
+
+C. API
+( No API )
+
+## Tech stack
+Programming Languages: PHP
+Frameworks: Laravel 8
+Database: MySQL
+Front-End               : HTML/JavaScript/CSS, Bootstrap
+Library                 : 
+- laravel/ui, using for Login / Register / Forget Password template.
+- laravel/sanctum, using for API token.
+- yajra/laravel-datatables-oracle, using for dynamic tables in Dashbaord.
+Other: GitHub, Visual Studio Code, Composer, NPM, Postman, Apache
 
 ## Installation
-
 - Clone the repo and `cd` into it
 - Run `composer install`
+- Run `npm install`
 - Rename or copy `.env.example` file to `.env`
 - Run `php artisan key:generate`
 - Set your database credentials in your `.env` file
+- Run `php artisan migrate --seed`
+- Run `php artisan storage:link`
 
-## Note
+Tutorial from M. Faiz Triputra : https://www.youtube.com/watch?v=Sv3GmVoedMQ&t=173s
 
-Recommend to install this preset on a project that you are starting from scratch, otherwise your project's design might break.
+## CPanel Deployment
+Assume you deploy wherever on domain or subdomain in CPanel, so you will use default root that is automatically created by CPanel. You can follow my tutorial : 
 
-## Credits
+https://medium.com/@m.faiztpaduhai/deploy-laravel-ke-shared-hosting-cpanel-dari-private-github-repository-854a4620c8aa
 
-Laravel SB Admin 2 uses some open-source third-party libraries/packages, many thanks to the web community.
+Just in case you deploy in the main domain, and you can't change the root you can change symlink,
 
-- Laravel - Open source framework.
-- LaravelEasyNav - Making managing navigation in Laravel easy.
-- SB Admin 2 - Thanks to Start Bootstrap.
+https://medium.com/@m.faiztpaduhai/symbolic-links-to-public-html-9b637ec3b20c
 
-## Preview
+After deployment there's few thing to prepare, specially change to production environment, just follow
 
-`login`
+https://stackoverflow.com/questions/59663762/laravel-what-steps-should-one-take-to-make-a-laravel-app-ready-for-production
 
-<img src="https://imgur.com/YjGp6Sbl.png">
-
-***
-
-`register`
-
-<img src="https://imgur.com/Wj09cu4l.png">
-
-***
-
-`dashboard`
-
-<img src="https://imgur.com/CrmOfT5l.png">
-
-***
-
-`profile`
-
-<img src="https://imgur.com/5t4eS1rl.png">
-
-***
-
-`logout`
-
-<img src="https://imgur.com/d9JclOYl.png">
-
-## License
-
-Licensed under the MIT license.
+## All links related to this project
+Please contact me (@faiz_triputra at Instagram)
